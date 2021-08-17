@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-test
+  namespace: postgres-test
+  labels:
+    app: postgres-test
+spec:
+  selector:
+    matchLabels:
+      app: postgres-test
+  template:
+    metadata:
+      labels:
+        app: postgres-test
+    spec:
+      volumes:
+        - name: postgres-test
+          persistentVolumeClaim:
+            claimName: postgres-test
+      containers:
+      - name: postgres
+        imagePullPolicy: Always
+        image: postgres:latest
+        ports:
+        - containerPort: 5432
+          name: postgres
+        env:
+        - name: POSTGRES_DB
+          value: "postgresdb"
+        - name: POSTGRES_USER
+          value: "postgresuser"
+        - name: POSTGRES_PASSWORD
+          value: "postgrespassword"
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgres-test

@@ -1,0 +1,25 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name:  rul-lstm
+  namespace: rul-lstm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rul-lstm
+  template:
+    metadata:
+      labels:
+        app: rul-lstm
+    spec:
+      containers:
+      - name: app
+        image: tensorflow/tensorflow:latest-devel-py3
+        command: ["/bin/sh", "-c"]
+        args:
+         - wget -i http://10.240.242.105:80/testbucket/rul-lstm/files.txt;
+           pip install --upgrade pip;
+           pip install psycopg2-binary;
+           pip install -r requirements.txt;
+           python rul_client.py;

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zeppelin
+spec:
+  selector:
+    matchLabels:
+      app: zeppelin
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: zeppelin
+    spec:
+      containers:
+      - name: zeppelin
+        image: apache/zeppelin:0.9.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: zeppelin
+          protocol: TCP
+        env:
+        - name: ZEPPELIN_NOTEBOOK_S3_USER
+          value: "access-key"
+        - name: ZEPPELIN_NOTEBOOK_S3_BUCKET
+          value: "zeppelin"
+        - name: ZEPPELIN_NOTEBOOK_S3_PATH_STYLE_ACCESS
+          value: "true"
+        - name: AWS_ACCESS_KEY_ID
+          value: "access-key"
+        - name: AWS_SECRET_ACCESS_KEY
+          value: "secret-key"
+        - name: ZEPPELIN_NOTEBOOK_S3_ENDPOINT
+          value: "http://10.152.183.240:9000"
+        - name: AWS_DEFAULT_REGION
+          value: "us-east-1"
+        - name: ZEPPELIN_NOTEBOOK_STORAGE
+          value: "org.apache.zeppelin.notebook.repo.S3NotebookRepo"
+

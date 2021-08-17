@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: elyra
+  namespace: elyra
+  labels:
+    app: elyra
+spec:
+  type: LoadBalancer
+  selector:
+    app: elyra
+  ports:
+  - port: 8888
+    name: elyra

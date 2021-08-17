@@ -1,0 +1,8 @@
+2021/07/15 13:27:42 Loading NVML
+2021/07/15 13:27:42 Starting FS watcher.
+2021/07/15 13:27:42 Starting OS watcher.
+2021/07/15 13:27:42 Retreiving plugins.
+2021/07/15 13:27:42 No MIG devices found. Falling back to mig.strategy=&{}
+2021/07/15 13:27:42 Starting GRPC server for 'nvidia.com/gpu'
+2021/07/15 13:27:42 Starting to serve 'nvidia.com/gpu' on /var/lib/kubelet/device-plugins/nvidia-gpu.sock
+2021/07/15 13:27:42 Registered device plugin for 'nvidia.com/gpu' with Kubelet

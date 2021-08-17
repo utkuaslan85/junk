@@ -1,0 +1,17 @@
+gpu-feature-discovery: 2021/07/15 13:26:28 Running gpu-feature-discovery in version v0.4.1
+gpu-feature-discovery: 2021/07/15 13:26:28 Loaded configuration:
+gpu-feature-discovery: 2021/07/15 13:26:28 Oneshot: false
+gpu-feature-discovery: 2021/07/15 13:26:28 FailOnInitError: true
+gpu-feature-discovery: 2021/07/15 13:26:28 SleepInterval: 1m0s
+gpu-feature-discovery: 2021/07/15 13:26:28 MigStrategy: single
+gpu-feature-discovery: 2021/07/15 13:26:28 NoTimestamp: false
+gpu-feature-discovery: 2021/07/15 13:26:28 OutputFilePath: /etc/kubernetes/node-feature-discovery/features.d/gfd
+gpu-feature-discovery: 2021/07/15 13:26:28 Start running
+gpu-feature-discovery: 2021/07/15 13:26:28 Writing labels to output file
+gpu-feature-discovery: 2021/07/15 13:26:28 Sleeping for 1m0s
+gpu-feature-discovery: 2021/07/15 13:27:28 Writing labels to output file
+gpu-feature-discovery: 2021/07/15 13:27:28 Sleeping for 1m0s
+gpu-feature-discovery: 2021/07/15 13:28:28 Writing labels to output file
+gpu-feature-discovery: 2021/07/15 13:28:28 Sleeping for 1m0s
+gpu-feature-discovery: 2021/07/15 13:29:28 Writing labels to output file
+gpu-feature-discovery: 2021/07/15 13:29:28 Sleeping for 1m0s

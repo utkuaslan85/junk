@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tfx
+  namespace: tfx
+  labels:
+    app: tfx
+spec:
+  selector:
+    matchLabels:
+      app: tfx
+  template:
+    metadata:
+      labels:
+        app: tfx
+    spec:
+      containers:
+      - name: tfx
+        imagePullPolicy: Always
+        image: tensorflow/tfx:latest
+        ports:
+        - containerPort: 80
+          name: tfx

@@ -1,0 +1,10 @@
+microk8s.helm3 repo add rook-release https://charts.rook.io/release
+
+microk8s.kubectl create namespace rook-ceph
+
+microk8s.helm3 upgrade --install \
+--set csi.kubeletDirPath=/var/snap/microk8s/common/var/lib/kubelet/ \
+--set enableDiscoveryDaemon=true \
+--namespace rook-ceph \
+rook-ceph rook-release/rook-ceph \
+--version 1.5

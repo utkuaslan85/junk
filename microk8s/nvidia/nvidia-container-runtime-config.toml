@@ -1,0 +1,10 @@
+disable-require = false
+
+[nvidia-container-cli]
+  environment = []
+  ldconfig = "@/run/nvidia/driver/sbin/ldconfig.real"
+  load-kmods = true
+  path = "/usr/local/nvidia/toolkit/nvidia-container-cli"
+  root = "/run/nvidia/driver"
+
+[nvidia-container-runtime]
