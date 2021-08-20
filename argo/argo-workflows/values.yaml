@@ -61,7 +61,7 @@ controller:
     runAsNonRoot: true
     allowPrivilegeEscalation: false
     capabilities:
-      drop:
+      add:
         - ALL
   persistence: {}
   # connectionPool:
@@ -112,7 +112,7 @@ controller:
     - kube-system
     - binance-test
     - argo
-  containerRuntimeExecutor: kubelet
+  containerRuntimeExecutor: k8sapi
   instanceID:
     # `instanceID.enabled` configures the controller to filter workflow submissions
     # to only those which have a matching instanceID attribute.
@@ -208,9 +208,9 @@ server:
   securityContext:
     readOnlyRootFilesystem: false
     runAsNonRoot: true
-    allowPrivilegeEscalation: false
+    allowPrivilegeEscalation: true
     capabilities:
-      drop:
+      add:
         - ALL
   name: server
   serviceType: ClusterIP
