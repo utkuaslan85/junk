@@ -10,7 +10,7 @@ metadata:
   name: schema-registry
 spec:
   ports:
-    - name: "8081"
+    - name: "8085"
       port: 8085
       targetPort: 8085
   selector:
