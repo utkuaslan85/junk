@@ -25,22 +25,12 @@ extraEnv: []
 #   value: "/any/additional/jars/desired.jar:/go/here.jar"
 
 ## Or you can also use configmap for the configuration...
-configuration: |
+configuration:
   akhq:
     server:
       access-log:
         enabled: false
         name: org.akhq.log.access
-    connections:
-      my-cluster-plain-text:
-        properties:
-          bootstrap.servers: "kafka.kafka.svc.cluster.local:9092"
-        schema-registry:
-          url: "http://schema-registry:8081"
-          type: "confluent"
-        connect:
-        - name: connect
-          url: "http://connect:8083"
 
 ##... and secret for connection information
 existingSecrets: ""

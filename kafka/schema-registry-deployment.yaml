@@ -31,11 +31,11 @@ spec:
             - name: SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS
               value: kafka.kafka.svc.cluster.local:9092
             - name: SCHEMA_REGISTRY_LISTENERS
-              value: http://0.0.0.0:8081
+              value: http://0.0.0.0:8085
           image: confluentinc/cp-schema-registry:6.2.0
           name: schema-registry
           ports:
-            - containerPort: 8081
+            - containerPort: 8085
           resources: {}
       hostname: schema-registry
       restartPolicy: Always
