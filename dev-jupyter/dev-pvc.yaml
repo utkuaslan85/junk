@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: elyra
-  namespace: elyra
+  name: dev-jupyter
+  namespace: dev-jupyter
   labels:
-    app: elyra
+    app: dev-jupyter
 spec:
   accessModes:
     - ReadWriteOnce

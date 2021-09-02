@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-jupyter
+  namespace: dev-jupyter
+spec:
+  selector:
+    matchLabels:
+      app: dev-jupyter
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dev-jupyter
+    spec:
+      volumes:
+        - name: dev-jupyter
+          persistentVolumeClaim:
+            claimName: dev-jupyter
+      containers:
+      - name: dev-jupyter
+        image: 10.152.183.174:5000/dev-jupyter:v0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8888
+          name: dev-jupyter
+          protocol: TCP
+        env:
+        - name: GRANT_SUDO
+          value: "yes"
+        command: ["/bin/sh", "-c"]
+        args:
+         - jupyter lab --debug --LabApp.token='';
+        volumeMounts:
+          - mountPath: /home/jovyan/work
+            name: dev-jupyter

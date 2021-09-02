@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: elyra
-  namespace: elyra
+  name: dev-jupyter
+  namespace: dev-jupyter
   labels:
-    app: elyra
+    app: dev-jupyter
 spec:
   type: LoadBalancer
   selector:
-    app: elyra
+    app: dev-jupyter
   ports:
   - port: 8888
-    name: elyra
+    name: dev-jupyter
