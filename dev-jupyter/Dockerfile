@@ -10,7 +10,7 @@ RUN pip install jupyterlab-plugin-graph jupyterlab-spreadsheet-editor jupyter-da
 RUN pip install jlab-enhanced-cell-toolbar lckr-jupyterlab-variableinspector
 RUN pip install jupyterlab_play_cell_button
 RUN jupyter lab build
-RUN pip install fastavro avro confluent-kafka python-binance s3fs
+RUN pip install fastavro avro confluent-kafka python-binance
 RUN pip install kafka-python python-binance minio modin[all] websocket-client
-RUN pip install requests PyGithub argo-workflows
+RUN pip install requests PyGithub argo-workflows s3fs
 RUN pip install git+https://github.com/couler-proj/couler
