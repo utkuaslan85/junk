@@ -19,7 +19,7 @@ spec:
             claimName: dev-jupyter
       containers:
       - name: dev-jupyter
-        image: 10.152.183.174:5000/dev-jupyter:v0.1
+        image: 10.152.183.174:5000/dev-jupyter:v0.2
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8888
@@ -30,7 +30,7 @@ spec:
           value: "yes"
         command: ["/bin/sh", "-c"]
         args:
-         - jupyter lab --debug --LabApp.token='';
+         - jupyter lab --debug --LabApp.token='' --allow-root;
         volumeMounts:
           - mountPath: /home/jovyan/work
             name: dev-jupyter
