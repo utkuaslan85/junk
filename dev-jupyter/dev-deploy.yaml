@@ -1,36 +1,36 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev-jupyter
+  name: dev-jupyter1
   namespace: dev-jupyter
 spec:
   selector:
     matchLabels:
-      app: dev-jupyter
+      app: dev-jupyter1
   replicas: 1
   template:
     metadata:
       labels:
-        app: dev-jupyter
+        app: dev-jupyter1
     spec:
       volumes:
-        - name: dev-jupyter
+        - name: dev-jupyter1
           persistentVolumeClaim:
-            claimName: dev-jupyter
+            claimName: dev-jupyter1
       containers:
       - name: dev-jupyter
-        image: 10.152.183.174:5000/dev-jupyter:v0.2
+        image: 10.152.183.174:5000/jupyterlab:3.1.2-hadoop-3.2.0.v01
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8888
-          name: dev-jupyter
+          name: dev-jupyter1
           protocol: TCP
         env:
         - name: GRANT_SUDO
           value: "yes"
         command: ["/bin/sh", "-c"]
         args:
-         - jupyter lab --debug --LabApp.token='' --allow-root;
+         - IPYTHONDIR=.ipython jupyter lab --debug --LabApp.token='' --allow-root;
         volumeMounts:
-          - mountPath: /home/jovyan/work
-            name: dev-jupyter
+          - mountPath: /opt/spark/work-dir
+            name: dev-jupyter1

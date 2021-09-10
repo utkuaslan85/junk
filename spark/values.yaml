@@ -56,9 +56,9 @@ diagnosticMode:
 ## @param image.debug Enable image debug mode
 ##
 image:
-  registry: docker.io
-  repository: bitnami/spark
-  tag: 3.1.2-debian-10-r70
+  registry: 10.152.183.174:5000
+  repository: spark
+  tag: 3.1.2-debian-10-r85
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -288,7 +288,7 @@ worker:
   extraEnvVars: []
   ## @param worker.replicaCount Number of spark workers (will be the minimum number when autoscaling is enabled)
   ##
-  replicaCount: 2
+  replicaCount: 1
   ## @param worker.podManagementPolicy Statefulset Pod Management Policy Type
   ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#pod-management-policies
   ##
@@ -364,15 +364,15 @@ worker:
   ##
   resources:
     ## Example:
+      limits:
+        cpu: 250m
+        memory: 256Mi
     ## limits:
-    ##    cpu: 250m
-    ##    memory: 256Mi
-    limits: {}
     ## Examples:
-    ## requests:
-    ##    cpu: 250m
-    ##    memory: 256Mi
-    requests: {}
+      requests:
+        cpu: 250m
+        memory: 256Mi
+    ## requests: {}
   ## Configure extra options for liveness probe
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
   ## @param worker.livenessProbe.enabled Enable livenessProbe
@@ -427,7 +427,7 @@ worker:
   autoscaling:
     ## @param worker.autoscaling.enabled Enable replica autoscaling depending on CPU
     ##
-    enabled: false
+    enabled: true
     ## @param worker.autoscaling.CpuTargetPercentage Kubernetes HPA CPU target percentage
     ##
     CpuTargetPercentage: 50
@@ -513,7 +513,7 @@ security:
 service:
   ## @param service.type Kubernetes Service type
   ##
-  type: ClusterIP
+  type: LoadBalancer
   ## @param service.clusterPort Spark cluster port
   ##
   clusterPort: 7077
@@ -620,7 +620,7 @@ ingress:
 metrics:
   ## @param metrics.enabled Start a side-car prometheus exporter
   ##
-  enabled: false
+  enabled: true
   ## @param metrics.masterAnnotations [object] Annotations for the Prometheus metrics on master nodes
   ##
   masterAnnotations:
@@ -640,7 +640,7 @@ metrics:
   podMonitor:
     ## @param metrics.podMonitor.enabled If the operator is installed in your cluster, set to true to create a PodMonitor Resource for scraping metrics using PrometheusOperator
     ##
-    enabled: false
+    enabled: true
     ## @param metrics.podMonitor.extraMetricsEndpoints Add metrics endpoints for monitoring the jobs running in the worker nodes
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/master/Documentation/api.md#podmetricsendpoint
     ## e.g:
