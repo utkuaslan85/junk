@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: dev-jupyter1
-  namespace: dev-jupyter
+  name: jupyterlab
+  namespace: spark
   labels:
-    app: dev-jupyter1
+    app: jupyterlab
 spec:
   accessModes:
     - ReadWriteOnce

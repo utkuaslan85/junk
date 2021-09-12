@@ -1,4 +1,4 @@
-FROM sparklab/spark:3.1.2-hadoop-3.2.0
+FROM spark-py:latest
 
 RUN apt-get update && apt install -y \
     wget \
