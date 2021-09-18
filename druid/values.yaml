@@ -47,7 +47,7 @@ configVars:
   # druid_storage_storageDirectory: 
   druid_indexer_logs_type: file
   druid_indexer_logs_directory: /opt/data/indexing-logs
-  druid_s3_endpoint_url: http://10.152.183.240:9000
+  druid_s3_endpoint_url: http://10.152.183.209:9000
   druid_s3_endpoint_signingRegion: us-east-1
   druid_s3_enable_PathStyleAccess: "true"
 
