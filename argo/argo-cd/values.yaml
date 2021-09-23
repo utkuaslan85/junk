@@ -215,7 +215,7 @@ controller:
 
 ## Dex
 dex:
-  enabled: true
+  enabled: false
   name: dex-server
 
   metrics:
@@ -312,7 +312,7 @@ dex:
 
 ## Redis
 redis:
-  enabled: true
+  enabled: false
   name: redis
 
   image:
