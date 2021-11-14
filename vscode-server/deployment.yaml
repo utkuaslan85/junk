@@ -33,7 +33,7 @@ spec:
         app: code-server
     spec:
       containers:
-      - image: codercom/code-server:latest
+      - image: localhost:32000/code-server:3.12.0
         imagePullPolicy: Always
         name: code-server
         ports:

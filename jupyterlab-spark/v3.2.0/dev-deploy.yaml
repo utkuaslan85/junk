@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jupyterlab
+  namespace: spark
+spec:
+  selector:
+    matchLabels:
+      app: jupyterlab
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jupyterlab
+    spec:
+      volumes:
+        - name: jupyterlab
+          persistentVolumeClaim:
+            claimName: jupyterlab
+      containers:
+      - name: jupyterlab
+        image: localhost:32000/jupyterlab-spark:3.2.0-hadoop-3.2.0-wjar
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8888
+          name: http
+          protocol: TCP
+        env:
+        - name: GRANT_SUDO
+          value: "yes"
+        command: ["/bin/sh", "-c"]
+        args:
+         - IPYTHONDIR=.ipython jupyter lab --debug --LabApp.token='' --allow-root --port=8888;
+        volumeMounts:
+          - mountPath: /home/notebook
+            name: jupyterlab

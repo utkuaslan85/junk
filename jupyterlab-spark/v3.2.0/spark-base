@@ -1,0 +1,4 @@
+wget https://dlcdn.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
+tar xvzf spark-3.2.0-bin-hadoop3.2.tgz
+cd spark-3.2.0-bin-hadoop3.2
+./bin/docker-image-tool.sh -u root -r localhost:32000 -t 3.2.0-hadoop-3.2.0 -p kubernetes/dockerfiles/spark/bindings/python/Dockerfile build
