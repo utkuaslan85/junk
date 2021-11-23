@@ -22,9 +22,9 @@ data:
         accesskey: access-key
         secretkey: secret-key
         region: us-east-1
-        regionendpoint: http://10.152.183.209:9000
+        regionendpoint: http://10.97.133.153:9000
         bucket: registry
-        secure: false
+        secure: true
         rootdirectory: /
     http:
       addr: :5000
