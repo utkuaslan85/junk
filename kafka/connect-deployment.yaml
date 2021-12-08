@@ -8,6 +8,7 @@ metadata:
   labels:
     io.kompose.service: connect
   name: connect
+  namespace: kafka
 spec:
   replicas: 1
   selector:
