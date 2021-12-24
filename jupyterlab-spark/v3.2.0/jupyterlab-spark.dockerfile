@@ -1,4 +1,4 @@
-FROM localhost:32000/spark:3.2.0-hadoop-3.2.0-wjar
+FROM 10.109.120.111:5000/spark:3.2.0-hadoop-3.2.0-wjar
 
 RUN pip install --upgrade pip
 
@@ -42,4 +42,4 @@ VOLUME /home/notebook/
 
 CMD jupyter lab --debug --LabApp.token='' --allow-root --port=8888 --notebook-dir=/home/notebook/  --no-browser --ip=0.0.0.0 
 
-# tag built image as localhost:32000/jupyterlab-spark:3.2.0-hadoop-3.2.0-wjar
+# tag built image as 10.109.120.111:5000/jupyterlab-spark:3.2.0-hadoop-3.2.0-wjar

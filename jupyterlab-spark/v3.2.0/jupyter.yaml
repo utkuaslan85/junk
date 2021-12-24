@@ -163,7 +163,7 @@ spec:
           value: "1"
       containers:
       - name: jupyter
-        image: "localhost:32000/jupyterlab-spark:3.2.0-hadoop-3.2.0-wjar"
+        image: "10.109.120.111:5000/jupyterlab-spark:3.2.0-hadoop-3.2.0-wjar"
         env:
         - name: GRANT_SUDO
           value: "yes"
