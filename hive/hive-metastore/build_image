@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+REPONAME=10.109.120.111:5000
+TAG=hive-metastore:1.0.0
+
+docker build -t $TAG .
+
+# Tag and push to the public docker repository.
+docker tag $TAG $REPONAME/$TAG
+docker push $REPONAME/$TAG
+
+
+# Update configmaps
+kubectl create configmap metastore-cfg --dry-run --from-file=hive-site.xml --from-file=core-site.xml -o yaml | kubectl apply -f -
+
+# create AWS secret
+kubectl create secret generic my-s3-keys --from-literal=access-key='XXXXXXX' --from-literal=secret-key='YYYYYYY'

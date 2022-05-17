@@ -1,0 +1,34 @@
+<configuration>
+<property>
+	<name>javax.jdo.option.ConnectionDriverName</name>
+	<value>com.mysql.cj.jdbc.Driver</value>
+</property>
+<property>
+	<name>javax.jdo.option.ConnectionURL</name>
+	<value>jdbc:mysql://metastore-db.hive.svc.cluster.local:13306/metastore_db?createDatabaseIfNotExist=true&amp;useSSL=false</value>
+</property>
+<property>
+    <name>hive.metastore.schema.verification</name>
+    <value>false</value>
+</property>
+<property>
+	<name>javax.jdo.option.ConnectionUserName</name>
+	<value>root</value>
+</property>
+<property>
+	<name>javax.jdo.option.ConnectionPassword</name>
+	<value>mypass</value>
+</property>
+<property>
+	<name>hive.metastore.warehouse.dir</name>
+	<value>s3a://data/lake/</value>
+</property>
+<property>
+	<name>hive.metastore.port</name>
+	<value>9083</value>
+</property>
+<property>
+    <name>hive.metastore.uris</name>
+    <value>thrift://metastore-svc.hive.svc.cluster.local:9083</value>
+</property>
+</configuration>

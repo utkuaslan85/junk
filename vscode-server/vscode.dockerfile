@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.12.0
+FROM codercom/code-server:latest
 USER root
 
 # pip installation

@@ -1,14 +1,10 @@
 apiVersion: v1
-kind: Namespace
-metadata:
-  name: code-server
----
-apiVersion: v1
 kind: Service
 metadata:
  name: code-server
  namespace: code-server
 spec:
+ type: LoadBalancer
  ports:
  - port: 80
    targetPort: 8080
@@ -32,8 +28,12 @@ spec:
       labels:
         app: code-server
     spec:
+      volumes:
+        - name: home
+          persistentVolumeClaim:
+            claimName: code-server
       containers:
-      - image: 10.109.120.111:5000/code-server:3.12.0
+      - image: 10.109.120.111:5000/codeserver-4.0.1:1.0
         imagePullPolicy: Always
         name: code-server
         ports:
@@ -43,3 +43,6 @@ spec:
         env:
         - name: PASSWORD
           value: "1234"
+        volumeMounts:
+        - name: home
+          mountPath: /root/gdrive

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-test
-  namespace: postgres-test
+  name: postgres
+  namespace: postgres
   labels:
-    app: postgres-test
+    app: postgres
 spec:
   selector:
     matchLabels:
-      app: postgres-test
+      app: postgres
   template:
     metadata:
       labels:
-        app: postgres-test
+        app: postgres
     spec:
       volumes:
-        - name: postgres-test
+        - name: postgres
           persistentVolumeClaim:
-            claimName: postgres-test
+            claimName: postgres
       containers:
       - name: postgres
         imagePullPolicy: Always
@@ -36,4 +36,4 @@ spec:
           value: /var/lib/postgresql/data/pgdata
         volumeMounts:
           - mountPath: /var/lib/postgresql/data
-            name: postgres-test
+            name: postgres

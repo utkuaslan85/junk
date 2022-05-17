@@ -56,9 +56,9 @@ diagnosticMode:
 ## @param image.debug Enable image debug mode
 ##
 image:
-  registry: docker.io
-  repository: bitnami/spark
-  tag: 3.2.0-debian-10-r33
+  registry: 10.109.120.111:5000
+  repository: bitnami-spark-wjar
+  tag: v1
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images

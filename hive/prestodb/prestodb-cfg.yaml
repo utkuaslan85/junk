@@ -1,0 +1,33 @@
+---
+kind: ConfigMap 
+apiVersion: v1 
+metadata:
+  name: prestodb-configs
+data:
+  config.properties.coordinator: |-
+    coordinator=true
+    node-scheduler.include-coordinator=false
+    http-server.http.port=8080
+    discovery-server.enabled=true
+    discovery.uri=http://localhost:8080
+  config.properties.worker: |-
+    coordinator=false
+    http-server.http.port=8080
+    discovery.uri=http://prestodb.hive.svc.cluster.local:8080
+  hive.properties: |-
+    connector.name=hive-hadoop2
+    hive.metastore.uri=thrift://metastore-svc.hive.svc.cluster.local:9083
+    hive.allow-drop-table=true
+    hive.max-partitions-per-scan=1000000
+    hive.s3.endpoint=10.6.28.200
+    hive.s3.path-style-access=true
+    hive.s3.ssl.enabled=false
+    hive.s3.max-connections=100
+    hive.s3.aws-access-key=JBOU35ZHUL7ILTY0JI3Y
+    hive.s3.aws-secret-key=DSG4BKmyeDKQ6CWfrATgZnttangEkUTxsNCU3M4X
+    hive.config.resources=/etc/hadoop/conf/core-site.xml,/etc/hadoop/conf/hive-site.xml
+  mysql.properties: |-
+    connector.name=mysql
+    connection-url=jdbc:mysql://metastore-db.hive.svc.cluster.local:13306
+    connection-user=root
+    connection-password=mypass
