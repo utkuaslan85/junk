@@ -24,9 +24,10 @@ spec:
       labels:
         app: metastore
     spec:
+      hostname: metastore-hive
       containers:
       - name: metastore
-        image: 10.109.120.111:5000/hive-metastore:6.0.0
+        image: 10.109.120.111:5000/hive-standalone-metastore:1.0.0
         env:
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
@@ -39,7 +40,8 @@ spec:
               name: my-s3-keys
               key: secret-key
         ports:
-        - containerPort: 9083
+        - name: metastore 
+          containerPort: 9083
         volumeMounts:
         - name: metastore-cfg-vol
           mountPath: /opt/hive-metastore/conf/hive-site.xml
@@ -49,7 +51,7 @@ spec:
           subPath: core-site.xml
         command: ["/bin/bash", "-c"]
         args: 
-          - hive --service metastore;
+          - start-metastore;
         imagePullPolicy: Always
       volumes:
         - name: metastore-cfg-vol

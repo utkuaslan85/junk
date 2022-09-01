@@ -20,15 +20,15 @@ ENV HADOOP_HOME="/opt/hadoop"
 ENV PATH="/opt/bitnami/spark/bin:/opt/hadoop/bin:${PATH}"
 
 # Download and install the standalone metastore binary.
-RUN curl https://archive.apache.org/dist/hive/hive-2.3.1/apache-hive-2.3.1-bin.tar.gz \
+RUN curl https://archive.apache.org/dist/hive/hive-standalone-metastore-3.0.0/hive-standalone-metastore-3.0.0-bin.tar.gz \
 	| tar xvz -C /opt/ \
-	&& ln -s /opt/apache-hive-2.3.1-bin /opt/hive-metastore
+	&& ln -s /opt/apache-hive-metastore-3.0.0-bin /opt/hive-metastore
 
 ENV HIVE_HOME="/opt/hive-metastore"
 ENV PATH="/opt/hive-metastore/bin:${PATH}"
 
-RUN curl -O https://repo1.maven.org/maven2/org/apache/hudi/hudi-hive-sync/0.11.0/hudi-hive-sync-0.11.0.jar \
-	&& mv hudi-hive-sync-0.11.0.jar /opt/hive-metastore/lib/ 
+RUN curl -O https://repo1.maven.org/maven2/org/apache/hudi/hudi-hive-sync-bundle/0.12.0/hudi-hive-sync-bundle-0.12.0.jar \
+	&& mv hudi-hive-sync-bundle-0.12.0.jar /opt/hive-metastore/lib/ 
 
 # Download and install the mysql connector.
 RUN curl -L https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-8.0.29.tar.gz \

@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: hivemeta
-        image: 10.109.120.111:5000/hive-metastore:5.0.0
+        image: 10.109.120.111:5000/hive-standalone-metastore:1.0.0
         command: ["/opt/hive-metastore/bin/schematool"]
         args: ["--verbose" ,"-initSchema" , "-dbType", "mysql"]
         volumeMounts:
