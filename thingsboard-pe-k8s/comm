@@ -1,0 +1,6 @@
+docker cp rule-engine-1.0.0-custom-nodes.jar a531a4d68b28:/usr/share/thingsboard/extensions
+docker exec -u root -t -i a531a4d68b28 /bin/bash
+chown thingsboard:thingsboard /usr/share/thingsboard/extensions/*
+docker inspect -f '{{ .GraphDriver.Data.UpperDir }}' test_mytb_1
+/var/lib/docker/overlay2/d8fe21e743e7dc4352cf49c38beb537ed5d065737fd463ca24a074570cd08e8e/diff/usr/share/thingsboard/extensions
+psql -U thingsboard -W

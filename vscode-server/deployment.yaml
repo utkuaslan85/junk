@@ -33,7 +33,7 @@ spec:
           persistentVolumeClaim:
             claimName: code-server
       containers:
-      - image: 10.109.120.111:5000/codeserver-4.0.1:1.0
+      - image: 10.109.120.111:5000/code-server:4.8.3
         imagePullPolicy: Always
         name: code-server
         ports:
